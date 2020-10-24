@@ -8,6 +8,9 @@ def false = \t f . f
 
 def and = \a b. a b false
 def or  = \a b. a true b
+def not = \x. x false true
+
+-- and λx y.if x then y else False
 
 -- Pares
 def pair = \x y p . p x y
