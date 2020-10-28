@@ -1,22 +1,26 @@
+-- idea en haskell
 --aplicarNVeces:: (Int -> Int) -> Int -> Int -> Int 
 --aplicarNVeces f x 0 = x
 --aplicarNVeces f x n = aplicarNVeces f (f x) (n-1)
 
+--Paso 1
 --aplicarNVeces = \func x n. (isZero n) x (aplicarNVeces (func x) (pred n))
-
+--Paso 2
 --aplicarNVeces = \f func x n. (isZero n) x (f (func x) (pred n))
 
+def aplicarNVeces = Y (\f func x n. (is0 n) x (f func (func x) (pred n)))
 
-
+--idea en haskell
 --map':: (Int -> Int) -> [Int] -> Int -> [Int]
 --map' f [] n = []
 --map' f (x:xs) n = (aplicarNVeces f x n) : map' f xs (n+1)
 
+--Paso 1
 --map' = \func l n. (isnil l) nil (cons (aplicarNVeces func (head l) n) (map' func (tail l) (suc n)))
-
+--Paso2
 --map' = \f func l n. (isnil l) nil (cons (aplicarNVeces func (head l) n) (f func (tail l) (suc n)))
 
-def aplicarNVeces = Y (\f func x n. (is0 n) x (f func (func x) (pred n)))
 def map' = Y (\f func l n. (isnil l) nil (cons (aplicarNVeces func (head l) n) (f func (tail l) (suc n))))
+
 def mapN = \func l. map' func l zero 
  
